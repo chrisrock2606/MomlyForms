@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MomlyForms.Views.CircularMenuView">
+  <ContentView.Content>
+      <StackLayout>
+            <Grid BackgroundColor="{StaticResource contentPageBackGroundColor}">
+
+                <Image x:Name="NW" Margin="0,0,180,60" WidthRequest="1" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Center"/>
+                <Image x:Name="NE" Margin="180,0,0,60" WidthRequest="1" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Center"/>
+                <Image x:Name="SW" Margin="0,160,130,0" WidthRequest="1" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Center"/>
+                <Image x:Name="SE" Margin="130,160,0,0" WidthRequest="1" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Center"/>
+                <Image x:Name="N" Margin="0,0,0,210" WidthRequest="1" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Center"/>
+                <Image x:Name="circle" HeightRequest="1" WidthRequest="1" VerticalOptions="Center" HorizontalOptions="Center"/>
+                <Label x:Name="bmiLabel" Opacity="0" TextColor="{StaticResource buttonTextColor}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Medium"/>
+                <!--<Frame HeightRequest="160" WidthRequest="50">
+                    <Label x:Name="bmiLabel" Text="test" FontSize="Large"/>
+                </Frame>-->
+                
+            </Grid>
+        </StackLayout>
+  </ContentView.Content>
+</ContentView>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MomlyForms.Views.TakePicturePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="225"></RowDefinition>  
+                    <RowDefinition Height="96"></RowDefinition>
+                    <RowDefinition Height="25"></RowDefinition>
+                </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+            <Image Source="evaluationLblBackgr.png" Aspect="AspectFill"/>
+                <ScrollView>
+                <Label x:Name="evaluationLabel"  TextColor="White" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Margin="20,20" Text="Tag et billede af din mad og få oplyst hvor mange kalorier maden indeholder ved hjælp af vores avancerede algoritmer"/>
+                </ScrollView>
+            </Grid>
+
+            <Frame x:Name="imageFrame" Grid.Row="2" CornerRadius="10" Margin="25" Padding="0" IsClippedToBounds="True" BackgroundColor="{StaticResource contentPageBackGroundColor}">
+                <Image x:Name="foodImage" HeightRequest="200" Aspect="AspectFill" />
+            </Frame>
+                
+            <Button x:Name="takePictureButton" Grid.Row="3" Image="add_a_photo.png" BackgroundColor="{StaticResource contentPageBackGroundColor}"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

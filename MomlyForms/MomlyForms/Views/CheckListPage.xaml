@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MomlyForms.Views.CheckListPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="10"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Image Source="evaluationLblBackgr.png" Aspect="AspectFill"/>
+                    <ScrollView >
+                        <Label x:Name="textLabel"  TextColor="White" FontSize="Medium" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" Margin="20,20"/>
+                    </ScrollView>
+                </Grid>
+                <!--<ListView  x:Name="checkList" Grid.Row="1" SeparatorVisibility="None" Margin="40,10">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <SwitchCell Text="{Binding Description}" On="{Binding Checked, Mode=TwoWay}" OnChanged="Switch_Toggled" fon/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>-->               
+                
+                <ListView x:Name="checkList" Grid.Row="1" SeparatorVisibility="None" Margin="40,10">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Vertical" MinimumHeightRequest="30">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding Description}" TextColor="{StaticResource buttonTextColor}" FontSize="Medium" HorizontalOptions="StartAndExpand" />
+                                        <Switch IsToggled="{Binding Checked, Mode=TwoWay}" Toggled="Switch_Toggled" HorizontalOptions="EndAndExpand"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>        
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

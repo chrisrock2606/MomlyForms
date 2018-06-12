@@ -16,11 +16,18 @@ namespace MomlyForms.Views
 	public partial class WalkPage : ContentPage
 	{
         List<MomlyFriend> momlyFriends = new List<MomlyFriend>();
+        public static double[] CurrentLocation { get; set; }
         public WalkPage()
         {
+            Title = "Aktiviteter";
             InitializeComponent();
-            AddPins();
+            GetCurrentLocation();
+        }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            AddPins();
         }
 
         public async void AddPins()
@@ -28,6 +35,7 @@ namespace MomlyForms.Views
             RestService restService = new RestService();
             momlyFriends = await restService.RefreshMomlyFriends();
 
+            walkMap.Pins.Clear();
             foreach (var friend in momlyFriends)
             {
                 var position = new Position(friend.Latitude, friend.Longtitude); // Latitude, Longitude
@@ -61,7 +69,11 @@ namespace MomlyForms.Views
             if (friend.BabyAgeInMonth > -1)
                 builder.Append($"Hendes baby er {friend.BabyAgeInMonth} måneder.");
 
-            builder.Append("\n" + friend.UserName + " ønsker en at gå tur med " + friend.PlannedWalk.ToString("ddd kl. HH:mm"));
+            string time = " kl. " + friend.PlannedWalk.ToString("HH:mm");
+            string date = friend.PlannedWalk.ToString("ddd") + "dag";
+
+            string dateTimeString = date + time;
+            builder.Append("\n" + friend.UserName + " ønsker en at gå tur med " + dateTimeString);
 
             return builder.ToString();
         }
@@ -70,6 +82,20 @@ namespace MomlyForms.Views
         {
             string text = "Går tur " + dateTime.ToString("ddd kl. HH:mm");
             return text;
+        }
+
+        private void PlusIcon_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new CreateWalkPage());
+        }
+
+        public async void GetCurrentLocation()
+        {
+            if (CurrentLocation == null)
+            {
+                CurrentLocation = await Location.GetLastKnownLocation();
+            }
+            CurrentLocation = await Location.GetLocation();
         }
     }
 }

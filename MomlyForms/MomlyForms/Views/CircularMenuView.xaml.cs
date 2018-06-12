@@ -16,11 +16,12 @@ namespace MomlyForms.Views
         private uint scaleSize = 80;
         private uint animationDelay = 200;
 
-        public CircularMenuView ()
-		{
-			InitializeComponent ();
+        public CircularMenuView()
+        {
+            InitializeComponent();
             LoadImages();
             ShowMenuOptions();
+
             InitializeMenuOptions();
 
             bmiLabel.Text = "BMI: \n23,54";
@@ -34,8 +35,8 @@ namespace MomlyForms.Views
                 var sender = (Image)s;
                 var source = sender.Source;
 
-                if (source.Equals(SW.Source))
-                    Navigation.PushAsync(new TakePicturePage());
+                if (source.Equals(SW.Source))                
+                    Navigation.PushAsync(new TakePicturePage());                
 
                 else if (source.Equals(NE.Source))
                     Navigation.PushAsync(new NursePage());
@@ -44,8 +45,7 @@ namespace MomlyForms.Views
                     Navigation.PushAsync(new WalkPage());
 
                 else if (source.Equals(NW.Source))
-                    Navigation.PushAsync(new CheckListPage());
-                
+                    Navigation.PushAsync(new CheckListPage());                
             };
 
             NW.GestureRecognizers.Add(tapGestureRecognizer);
@@ -78,10 +78,9 @@ namespace MomlyForms.Views
             await SE.ScaleTo(scaleSize, animationDelay, Easing.BounceOut);
             await SW.ScaleTo(scaleSize, animationDelay, Easing.BounceOut);
             await NW.ScaleTo(scaleSize, animationDelay, Easing.BounceOut);
-
-
             isAnimating = false;
         }
+
 
         private void LoadImages()
         {

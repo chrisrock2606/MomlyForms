@@ -3,12 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              x:Class="MomlyForms.Views.WalkPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Clicked="PlusIcon_Clicked" Icon="ic_action_add.png"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
             <Grid x:Name="walkGrid">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="200"></RowDefinition>
+                    <RowDefinition Height="150"></RowDefinition>
                     <RowDefinition Height="300"></RowDefinition>
+                    <RowDefinition Height="150"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
                     <Image Source="blueBackgr.png" Aspect="AspectFill"/>

@@ -4,8 +4,7 @@
              x:Class="MomlyForms.Views.CircularMenuView">
   <ContentView.Content>
       <StackLayout>
-            <Grid BackgroundColor="{StaticResource contentPageBackGroundColor}">
-
+            <Grid  >
                 <Image x:Name="NW" Margin="0,0,180,60" WidthRequest="1" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Center"/>
                 <Image x:Name="NE" Margin="180,0,0,60" WidthRequest="1" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Center"/>
                 <Image x:Name="SW" Margin="0,160,130,0" WidthRequest="1" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Center"/>

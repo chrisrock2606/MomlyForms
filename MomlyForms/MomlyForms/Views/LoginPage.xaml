@@ -4,8 +4,8 @@
              x:Class="MomlyForms.Views.LoginPage">
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center">
-            <Entry x:Name="emailEntry" Placeholder="Email" Keyboard="Email"/>
-            <Entry x:Name="passwordEntry" Placeholder="Password"/>
+            <Entry x:Name="emailEntry" Placeholder="Email" Keyboard="Email" Text="mail@christian-web.dk"/>
+            <Entry x:Name="passwordEntry" Placeholder="Password" Text="abcdefg" IsPassword="True"/>
             <Button x:Name="loginButton" Text="Log in" Clicked="loginButton_Clicked"/>
             <Button x:Name="forgotPasswordButton" Text="Glemt Password" Clicked="forgotPasswordButton_Clicked"/>
         </StackLayout>

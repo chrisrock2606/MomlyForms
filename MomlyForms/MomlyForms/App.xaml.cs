@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MomlyForms.Views;
+using MomlyForms.Models;
 
 using Xamarin.Forms;
 
@@ -14,14 +15,13 @@ namespace MomlyForms
         public event Action ShouldTakePicture = () => { };
         public Command commandTakePicture;
         public static App Instance;
-
+        public Account Account;
         public App ()
 		{
 			InitializeComponent();
             Instance = this;
             commandTakePicture = new Command(o => ShouldTakePicture());
-            MainPage = new NavigationPage(new MainMenuPage());
-            
+            MainPage = new NavigationPage(new LoginPage());            
 		}
 
         protected override void OnStart ()

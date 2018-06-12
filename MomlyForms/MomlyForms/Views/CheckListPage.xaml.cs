@@ -23,7 +23,6 @@ namespace MomlyForms.Views
 			InitializeComponent ();
             InitializeAllItems();
 
-            checkList.ItemsSource = allItems;
             ItemsCheckedText();
         }
 
@@ -48,7 +47,7 @@ namespace MomlyForms.Views
                     }
                     builder.Append(item.Description + ", ");
                 }
-                textLabel.Text = builder.ToString().TrimEnd(',');
+                textLabel.Text = builder.ToString().TrimEnd(',', ' ');
             }
         }
 
@@ -67,21 +66,11 @@ namespace MomlyForms.Views
             ItemsCheckedText();
         }
 
-        private void InitializeAllItems()
+        private async void InitializeAllItems()
         {
-            string[] arr = { "Klapvogn", "Barnevogn", "Bæresele", "Rejseseng", "Lagen", "Dyne", "Pude",
-                "Bamse", "Sutteklud", "Nattøj", "Body", "Bluse", "Busker", "Undertøj", "Undertøjsbody", "Strømper",
-                "Overtøj", "Fodtøj", "Højstol", "Babyalarm + oplader", "Legetøj", "Sutter", "Ammepude", "Ammeindlæg",
-                "Bleer", "Stofbleer", "Tandbørste", "D-dråber", "Jerndråber", "Zinksalve", "Vådservietter",
-                "Skumvaskeklude", "Desinficerende gel", "Puslepude", "Engangsunderlag", "Affaldspose",
-                "Hagesmæk", "Tallerken", "Bestik", "Sutteflasker",
-                "Glas", "Sutteflaske", "Modermælkserstatning", "Termokande med kogende vand", "Most banan",
-                "Kiks", "Snack", "Vand", "Solcreme" };
-
-            foreach (var item in arr)
-            {
-                allItems.Add(new CheckListItem() { Description = item });
-            }
+            RestService restService = new RestService();
+            allItems = await restService.RefreshCheckListItems();
+            checkList.ItemsSource = allItems;
         }
     }
 }

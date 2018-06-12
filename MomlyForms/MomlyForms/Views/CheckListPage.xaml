@@ -16,14 +16,7 @@
                         <Label x:Name="textLabel"  TextColor="White" FontSize="Medium" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" Margin="20,20"/>
                     </ScrollView>
                 </Grid>
-                <!--<ListView  x:Name="checkList" Grid.Row="1" SeparatorVisibility="None" Margin="40,10">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <SwitchCell Text="{Binding Description}" On="{Binding Checked, Mode=TwoWay}" OnChanged="Switch_Toggled" fon/>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>-->               
-                
+
                 <ListView x:Name="checkList" Grid.Row="1" SeparatorVisibility="None" Margin="40,10">
                     <ListView.ItemTemplate>
                         <DataTemplate>

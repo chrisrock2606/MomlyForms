@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             x:Class="MomlyForms.Views.CreateWalkPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid x:Name="walkGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="120"></RowDefinition>
+                    <RowDefinition Height="300"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Image Source="nursingLblBackgr.png" Aspect="AspectFill"/>
+                    <ScrollView>
+                    <Label x:Name="descriptionLabel"  TextColor="White" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Margin="20,20" Text="Her kan du oprette en aftale. Angiv et sted, en dato og så er du klar :)"/>
+                    </ScrollView>
+                </Grid>
+                <StackLayout Grid.Row="1" Orientation="Horizontal">
+                    <maps:Map x:Name="walkMap" Grid.Row="1" WidthRequest="300" HeightRequest="300" IsShowingUser="True" MapType="Hybrid" />
+                    <StackLayout Orientation="Vertical" WidthRequest="30">
+                        <Button x:Name="upBtn" Style="{StaticResource arrowButton}" Image="ic_action_keyboard_arrow_up.png" Clicked="Btn_Clicked" />
+                        <Button x:Name="downBtn" Style="{StaticResource arrowButton}" Image="ic_action_keyboard_arrow_down.png" Clicked="Btn_Clicked"/>
+                        <Button x:Name="leftBtn" Style="{StaticResource arrowButton}" Image="ic_action_keyboard_arrow_left.png" Margin="0,30,0,0" Clicked="Btn_Clicked"/>
+                        <Button x:Name="rightBtn" Style="{StaticResource arrowButton}" Image="ic_action_keyboard_arrow_right.png" Clicked="Btn_Clicked"/>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Grid.Row="2">
+                        <Label Text="Aftaletidspunkt: "/>
+                        <DatePicker x:Name="datePicker" Format="D"/>
+                    <TimePicker x:Name="timePicker" Format="HH:mm"/>
+                </StackLayout>
+                <Frame Grid.Row="3" WidthRequest="30" HeightRequest="30" CornerRadius="30" HorizontalOptions="Center" VerticalOptions="Center" >
+                    <Button x:Name="submitBtn" HorizontalOptions="Center" VerticalOptions="Center" Image="ic_action_done.png" BackgroundColor="White" Clicked="submitBtn_Clicked"/>
+                </Frame>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

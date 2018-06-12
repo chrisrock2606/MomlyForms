@@ -18,13 +18,16 @@ using Android;
 
 namespace MomlyForms.Droid
 {
-    [Activity(Label = "MomlyForms", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "MomlyForms", Icon = "@drawable/icon", Theme = "@style/SplashTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         public static string StatusbarColor { get; set; }
         static readonly File _file = new File(Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryPictures), String.Format("myPhoto_{0}.jpg", Guid.NewGuid()));
         protected override void OnCreate(Bundle bundle)
         {
+            StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+            StrictMode.SetVmPolicy(builder.Build());
+
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
@@ -40,7 +43,7 @@ namespace MomlyForms.Droid
             {
                 var intent = new Intent(MediaStore.ActionImageCapture);
                 intent.PutExtra(MediaStore.ExtraOutput, Android.Net.Uri.FromFile(_file));
-                StartActivityForResult(intent, 100);
+                StartActivityForResult(intent, 0);
             };
         }
 
@@ -48,10 +51,8 @@ namespace MomlyForms.Droid
         {
             base.OnActivityResult(requestCode, resultCode, data);
 
-            if (requestCode == 100)            
-                TakePicturePage.Instance.ShowImage(_file.Path);
-
-            
+            if (requestCode == 0)            
+                TakePicturePage.Instance.ShowImage(_file.Path);            
         }
 
         protected override void OnStart()
@@ -67,6 +68,7 @@ namespace MomlyForms.Droid
                 System.Diagnostics.Debug.WriteLine("Permission Granted!!!");
             }
         }
+
     }
 }
 

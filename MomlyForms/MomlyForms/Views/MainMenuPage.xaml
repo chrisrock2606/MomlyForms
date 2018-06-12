@@ -3,15 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MomlyForms.Views"
              x:Class="MomlyForms.Views.MainMenuPage">
-    <ContentPage.Content>
+    <ContentPage.Content>        
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="100"></RowDefinition>
             </Grid.RowDefinitions>
-            <local:CircularMenuView x:Name="Menu" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" ></local:CircularMenuView>
-            <Button Grid.Row="1" x:Name="Back" Text="Tilbage"/>
+            <local:CircularMenuView x:Name="Menu" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center"></local:CircularMenuView>
         </Grid>
-
     </ContentPage.Content>
 </ContentPage>

@@ -8,10 +8,8 @@
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 	<application android:label="MomlyForms.Android">
-    <meta-data
-      android:name="com.google.android.geo.API_KEY"
-      android:value="AIzaSyA13NZtXReqNeoI-x67QOhFNntV8Nh4SIk"></meta-data>
-  </application>
-
+		<meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyA13NZtXReqNeoI-x67QOhFNntV8Nh4SIk"></meta-data>
+	</application>
 </manifest>

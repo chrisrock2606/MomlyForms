@@ -6,6 +6,7 @@ namespace MomlyForms.Models
 {
     public class MomlyFriend
     {
+        public int MomlyFriendId { get; set; }
         public string UserName { get; set; }
         public int Age { get; set; }
         public int BabyAgeInMonth { get; set; }

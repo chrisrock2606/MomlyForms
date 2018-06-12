@@ -11,7 +11,7 @@ namespace MomlyForms.Data
     public class RestService
     {
         HttpClient client;
-        string restUrl = "http://momlyrestservice.azurewebsites.net/api/walk";
+        string restUrl = "http://momlyrestservice.azurewebsites.net/{0}";
 
         public RestService()
         {
@@ -23,21 +23,48 @@ namespace MomlyForms.Data
         {
             List<MomlyFriend> friends = new List<MomlyFriend>();
 
-            var uri = new Uri(string.Format(restUrl, string.Empty));
-            var response = await client.GetAsync(uri);
-            if (response.IsSuccessStatusCode)
+            var uri = new Uri(string.Format(restUrl, "api/walk"));
+            try
             {
-                var content = await response.Content.ReadAsStringAsync();
-                friends = JsonConvert.DeserializeObject<List<MomlyFriend>>(content);
+                var response = await client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    friends = JsonConvert.DeserializeObject<List<MomlyFriend>>(content);
+                }
+
+            }
+            catch (Exception)
+            {
+                return friends;
             }
             return friends;
+        }
+
+        public async Task<string> CreateMomlyActivity(MomlyFriend momlyFriend)
+        {
+            var uri = new Uri(string.Format(restUrl, "api/walk"));
+
+            var json = JsonConvert.SerializeObject(momlyFriend);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = null;
+
+            response = await client.PostAsync(uri, content);
+            
+            if (response.IsSuccessStatusCode)
+            {
+                return "OK";
+            }
+
+            return "Error";
         }
 
         public async Task<List<CheckListItem>> RefreshCheckListItems()
         {
             List<CheckListItem> items = new List<CheckListItem>();
 
-            var uri = new Uri(string.Format(restUrl, string.Empty));
+            var uri = new Uri(string.Format(restUrl, "api/checklist"));
             var response = await client.GetAsync(uri);
             if (response.IsSuccessStatusCode)
             {
@@ -45,6 +72,19 @@ namespace MomlyForms.Data
                 items = JsonConvert.DeserializeObject<List<CheckListItem>>(content);
             }
             return items;
+        }
+
+        public async Task<string> RefreshPictureEvaluation()
+        {
+            string text = "error";
+            var uri = new Uri(string.Format(restUrl, "api/picture"));
+            var response = await client.GetAsync(uri);
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                text = JsonConvert.DeserializeObject<string>(content);
+            }
+            return text;
         }
     }
 }

@@ -15,14 +15,10 @@ namespace MomlyForms.Views
 		public MainMenuPage ()
 		{
 			InitializeComponent ();
-            Back.Clicked += Back_Clicked;
 
             Title = "Menu";
+            BackgroundImage = "MomlySplash1Background.png";
 		}
 
-        private void Back_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PopAsync();
-        }
     }
 }

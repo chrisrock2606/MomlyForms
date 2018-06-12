@@ -24,6 +24,12 @@
                 <Setter Property="FontAttributes" Value="Bold"/>
             </Style>
 
+            <Style x:Key="arrowButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource contentPageBackGroundColor}"/>
+                <Setter Property="MinimumHeightRequest" Value="30"/>
+                <Setter Property="MinimumWidthRequest" Value="30"/>
+            </Style>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

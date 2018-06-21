@@ -25,12 +25,18 @@ namespace MomlyForms.Views
 
         private async void Evaluation()
         {
+            indicator.IsRunning = true;
+            indicator.IsVisible = true;
+
             await evaluationLabel.FadeTo(0, 300);
             evaluationLabel.Text = "Billedet evalueres...";
             await evaluationLabel.FadeTo(1, 300);
 
             RestService restService = new RestService();
             string responseText = await restService.RefreshPictureEvaluation();
+
+            indicator.IsVisible = false;
+            indicator.IsRunning = false;
 
             await evaluationLabel.FadeTo(0, 300);
             evaluationLabel.Text = responseText;

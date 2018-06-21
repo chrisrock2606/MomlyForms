@@ -12,7 +12,6 @@ namespace MomlyForms.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class CircularMenuView : ContentView
 	{
-        private bool isAnimating = false;
         private uint scaleSize = 80;
         private uint animationDelay = 200;
 
@@ -55,18 +54,8 @@ namespace MomlyForms.Views
             N.GestureRecognizers.Add(tapGestureRecognizer);
         }
 
-        private void AnimateWhenTapped(Image sender)
-        {
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                sender.RotateTo(720, 300);
-            });
-        }
-
         private async void ShowMenuOptions()
         {
-            isAnimating = true;
-
             Device.BeginInvokeOnMainThread(() =>
             {
                  circle.ScaleTo(120, animationDelay*5, Easing.BounceOut);
@@ -78,7 +67,6 @@ namespace MomlyForms.Views
             await SE.ScaleTo(scaleSize, animationDelay, Easing.BounceOut);
             await SW.ScaleTo(scaleSize, animationDelay, Easing.BounceOut);
             await NW.ScaleTo(scaleSize, animationDelay, Easing.BounceOut);
-            isAnimating = false;
         }
 
 

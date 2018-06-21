@@ -12,10 +12,6 @@
                 <Image x:Name="N" Margin="0,0,0,210" WidthRequest="1" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Center"/>
                 <Image x:Name="circle" HeightRequest="1" WidthRequest="1" VerticalOptions="Center" HorizontalOptions="Center"/>
                 <Label x:Name="bmiLabel" Opacity="0" TextColor="{StaticResource buttonTextColor}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Medium"/>
-                <!--<Frame HeightRequest="160" WidthRequest="50">
-                    <Label x:Name="bmiLabel" Text="test" FontSize="Large"/>
-                </Frame>-->
-                
             </Grid>
         </StackLayout>
   </ContentView.Content>

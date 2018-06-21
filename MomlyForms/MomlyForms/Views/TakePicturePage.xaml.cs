@@ -56,7 +56,6 @@ namespace MomlyForms.Views
             if (stream != null)
                 foodImage.Source = ImageSource.FromStream(() => stream); //expression lambda
 
-
             Evaluation();
         }
     }

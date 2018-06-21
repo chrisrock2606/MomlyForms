@@ -17,6 +17,7 @@ namespace MomlyForms.Views
 		public NursePage ()
 		{
 			InitializeComponent ();
+            Title = "Amning";
             InitializeNursingAdvices();
             headerList.ItemsSource = nurseAdvices;
             headerList.ItemTapped += HeaderList_ItemTapped;

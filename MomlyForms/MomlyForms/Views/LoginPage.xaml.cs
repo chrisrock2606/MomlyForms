@@ -14,13 +14,14 @@ namespace MomlyForms.Views
 	{
 		public LoginPage ()
 		{
+            Title = "Log ind";
 			InitializeComponent ();
 		}
 
-
-        private void loginButton_Clicked(object sender, EventArgs e)
+        private async void loginButton_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new MainMenuPage());
+            Navigation.InsertPageBefore(new MainMenuPage(), this);
+            await Navigation.PopAsync();
         }
     }
 }

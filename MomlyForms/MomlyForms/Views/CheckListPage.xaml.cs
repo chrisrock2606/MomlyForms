@@ -21,6 +21,7 @@ namespace MomlyForms.Views
         public CheckListPage ()
 		{
 			InitializeComponent ();
+            Title = "Huskeliste";
             InitializeAllItems();
 
             ItemsCheckedText();

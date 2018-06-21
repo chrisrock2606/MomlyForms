@@ -7,22 +7,19 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using MomlyForms.Data;
+using System.IO;
 
 namespace MomlyForms.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TakePicturePage : ContentPage
 	{
-        public static TakePicturePage Instance;
-        ImageSource ImageSource;
         TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer();
 
         public TakePicturePage ()
 		{
 			InitializeComponent ();
-            Instance = this;
             Title = "Kalorietæller";
-            takePictureButton.Command = App.Instance.commandTakePicture;
             foodImage.Source = ImageSource.FromResource("MomlyForms.Assets.Images.food.jpg", typeof(TakePicturePage));
         }
 
@@ -52,10 +49,14 @@ namespace MomlyForms.Views
             evaluationLabel.GestureRecognizers.Add(tapGestureRecognizer);
         }
 
-        public void ShowImage(string filepath)
+        private async void takePictureButton_Clicked(object sender, EventArgs e)
         {
-            ImageSource = ImageSource.FromFile(filepath);
-            foodImage.Source = ImageSource;
+            Stream stream = await DependencyService.Get<IPicture>().GetImageStreamAsync();
+
+            if (stream != null)
+                foodImage.Source = ImageSource.FromStream(() => stream); //expression lambda
+
+
             Evaluation();
         }
     }

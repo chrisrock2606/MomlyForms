@@ -23,7 +23,7 @@
                 <Image x:Name="foodImage" HeightRequest="200" Aspect="AspectFill" />
             </Frame>
                 
-            <Button x:Name="takePictureButton" Grid.Row="3" Image="add_a_photo.png" BackgroundColor="{StaticResource contentPageBackGroundColor}"/>
+            <Button x:Name="takePictureButton" Grid.Row="3" Image="add_a_photo.png" BackgroundColor="{StaticResource contentPageBackGroundColor}" Clicked="takePictureButton_Clicked"/>
             </Grid>
         </StackLayout>
     </ContentPage.Content>

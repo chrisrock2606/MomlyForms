@@ -12,15 +12,9 @@ namespace MomlyForms
 {
     public partial class App : Application
 	{
-        public event Action ShouldTakePicture = () => { };
-        public Command commandTakePicture;
-        public static App Instance;
-        public Account Account;
         public App ()
 		{
 			InitializeComponent();
-            Instance = this;
-            commandTakePicture = new Command(o => ShouldTakePicture());
             MainPage = new NavigationPage(new LoginPage());            
 		}
 

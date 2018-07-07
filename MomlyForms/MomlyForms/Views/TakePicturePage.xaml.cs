@@ -60,9 +60,11 @@ namespace MomlyForms.Views
             Stream stream = await DependencyService.Get<IPicture>().GetImageStreamAsync();
 
             if (stream != null)
+            {
                 foodImage.Source = ImageSource.FromStream(() => stream); //expression lambda
+                Evaluation();
+            }
 
-            Evaluation();
         }
     }
 }
